@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AK Make-A-Wish | Ardrey Kell High School</title>
+    <title>Ardrey Kell Make-A-Wish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,207 +13,485 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .main-content {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 60px 50px;
-            border-radius: 25px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(10px);
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .logo {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 50%;
-            margin: 0 auto 30px;
+        /* Hero Section with Blue Background */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(1, 37, 79, 0.85), rgba(8, 105, 202, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231c5aa0" width="1200" height="600"/><defs><pattern id="stars" patternUnits="userSpaceOnUse" width="120" height="120"><rect fill="transparent" width="120" height="120"/><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.4)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.3)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.5)"/><circle cx="100" cy="100" r="2.5" fill="rgba(255,255,255,0.2)"/><polygon fill="rgba(255,255,255,0.15)" points="60,15 64,25 75,25 67,32 70,42 60,37 50,42 53,32 45,25 56,25"/></pattern></defs><rect fill="url(%23stars)" width="1200" height="600"/><g opacity="0.08"><text x="200" y="150" fill="white" font-size="36" font-family="Poppins" font-weight="300">Make-A-Wish</text><text x="650" y="350" fill="white" font-size="36" font-family="Poppins" font-weight="300">Make-A-Wish</text><text x="300" y="480" fill="white" font-size="36" font-family="Poppins" font-weight="300">Make-A-Wish</text></g></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            text-align: center;
             color: white;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 {
-            color: #2c3e50;
-            font-size: 3rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            padding: 0 40px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #ffffff, #e3f2fd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: fadeInUp 1s ease-out;
         }
 
-        .content-text {
-            color: #555;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 800px;
+        .hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            opacity: 0.95;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Content Section */
+        .content-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(28, 90, 160, 0.1), transparent);
+        }
+
+        .container {
+            max-width: 1300px;
             margin: 0 auto;
-            text-align: left;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 100px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
-        .content-text strong {
-            color: #2c3e50;
+        .text-content {
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1c5aa0, #2563eb, #3b82f6);
+        }
+
+        .text-content h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #1c5aa0;
+            font-size: 3.2rem;
+            margin-bottom: 40px;
             font-weight: 700;
+            background: linear-gradient(135deg, #1c5aa0, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
         }
 
-        .stars {
-            position: fixed;
+        .text-content p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: #475569;
+            text-align: left;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .text-content p strong {
+            color: #1e293b;
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(28, 90, 160, 0.1), rgba(37, 99, 235, 0.1));
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .image-container {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            background: linear-gradient(45deg, #1c5aa0, #2563eb);
+            padding: 8px;
+        }
+
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .image-container:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 40px 120px rgba(28, 90, 160, 0.3);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+            border-radius: 22px;
+            transition: all 0.4s ease;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .scroll-indicator .arrow {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 300;
+        }
+
+        .scroll-indicator p {
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-8px);
+            }
+        }
+
+        /* Floating elements */
+        .floating-stars {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.8; }
-        }
-
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
         .floating-star {
             position: absolute;
             color: rgba(255, 255, 255, 0.6);
             font-size: 1.5rem;
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg);
+                opacity: 1;
+            }
         }
 
+        /* Decorative elements */
+        .decorative-blob {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: blob 20s infinite;
+            pointer-events: none;
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 7s;
+        }
+
+        .blob-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 70%;
+            animation-delay: 14s;
+        }
+
+        @keyframes blob {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.7;
+            }
+            33% {
+                transform: scale(1.1) rotate(120deg);
+                opacity: 0.3;
+            }
+            66% {
+                transform: scale(0.9) rotate(240deg);
+                opacity: 0.8;
+            }
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .main-content {
-                padding: 40px 30px;
-                margin-top: 20px;
+            .hero h1 {
+                font-size: 2.8rem;
             }
             
-            h1 {
-                font-size: 2.2rem;
-                margin-bottom: 30px;
-            }
-            
-            .content-text {
+            .hero p {
                 font-size: 1.1rem;
             }
-            
-            .logo {
-                width: 80px;
-                height: 80px;
+
+            .container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .content-section {
+                padding: 60px 20px;
+            }
+
+            .text-content {
+                padding: 20px;
+            }
+
+            .text-content h2 {
                 font-size: 2rem;
+            }
+
+            .text-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-content {
+                padding: 0 20px;
             }
         }
 
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
+            .hero h1 {
+                font-size: 2.2rem;
             }
             
-            .main-content {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .content-text {
+            .text-content p {
                 font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="floating-elements" id="floating-elements"></div>
-    
-    <div class="container">
-        <div class="main-content">
-            <div class="logo">★</div>
-            <h1>Welcome to AK Make-A-Wish!</h1>
-            <div class="content-text">
-                <p><strong>At AK Make-A-Wish, we are committed to raising awareness and funds to support the Make-A-Wish Foundation in granting life-changing wishes for children facing critical illnesses.</strong> Partnering with Make-A-Wish Central & Western North Carolina (CWNC), we are proud to be their largest student-led organization. Our mission is to bring hope, strength, and joy to these children by organizing school-wide fundraisers, events, and activities that encourage community involvement and support. As a member, you'll have the chance to develop leadership skills, collaborate with a passionate team of peers, and make a real impact on the lives of families in need. <strong>Join us today and help turn dreams into reality!</strong></p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-stars" id="floating-stars"></div>
+        <div class="decorative-blob blob-1"></div>
+        <div class="decorative-blob blob-2"></div>
+        <div class="decorative-blob blob-3"></div>
+        
+        <div class="hero-content">
+            <h1>Ardrey Kell Make-A-Wish</h1>
+            <p>Turning Dreams Into Reality</p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="arrow">↓</div>
+            <p>Discover Our Mission</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-content">
+                <h2>Welcome to AK Make-A-Wish!</h2>
+                <p>At AK Make-A-Wish, we are committed to raising awareness and funds to support the Make-A-Wish Foundation in granting life-changing wishes for children facing critical illnesses.</strong> Partnering with Make-A-Wish Central & Western North Carolina (CWNC), we are proud to be their largest student-led organization. Our mission is to bring hope, strength, and joy to these children by organizing school-wide fundraisers, events, and activities that encourage community involvement and support. As a member, you'll have the chance to develop leadership skills, collaborate with a passionate team of peers, and make a real impact on the lives of families in need. <b>Join us today and help turn dreams into reality!</b></p>
+            </div>
+            
+            <div class="image-container">
+                <img src="assets/club_pic.jpg" 
+                     alt="AK Make-A-Wish Team" 
+                     class="team-photo">
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
-        // Create twinkling stars background
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const numStars = 50;
+        // Create floating stars
+        function createFloatingStars() {
+            const container = document.getElementById('floating-stars');
+            const stars = ['✩', '⭐', '⟡', '✰', '✦', '★'];
             
-            for (let i = 0; i < numStars; i++) {
+            for (let i = 0; i < 12; i++) {
                 const star = document.createElement('div');
-                star.className = 'star';
+                star.className = 'floating-star';
+                star.textContent = stars[Math.floor(Math.random() * stars.length)];
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                starsContainer.appendChild(star);
+                star.style.animationDelay = Math.random() * 8 + 's';
+                star.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                container.appendChild(star);
             }
         }
 
-        // Create floating star elements
-        function createFloatingElements() {
-            const container = document.getElementById('floating-elements');
-            const symbols = ['✨', '⭐', '💫', '🌟'];
-            
-            for (let i = 0; i < 8; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-star';
-                element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-                element.style.left = Math.random() * 90 + '%';
-                element.style.top = Math.random() * 80 + '%';
-                element.style.animationDelay = Math.random() * 6 + 's';
-                element.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                container.appendChild(element);
-            }
-        }
-
-        // Initialize animations when page loads
+        // Smooth scrolling for scroll indicator
         document.addEventListener('DOMContentLoaded', function() {
-            createStars();
-            createFloatingElements();
+            createFloatingStars();
+            
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', function() {
+                    document.querySelector('.content-section').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+
+        // Enhanced parallax effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.3;
+            
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe content sections for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const textContent = document.querySelector('.text-content');
+            const imageContainer = document.querySelector('.image-container');
+            
+            if (textContent) {
+                textContent.style.opacity = '0';
+                textContent.style.transform = 'translateY(30px)';
+                textContent.style.transition = 'all 0.8s ease-out';
+                observer.observe(textContent);
+            }
+            
+            if (imageContainer) {
+                imageContainer.style.opacity = '0';
+                imageContainer.style.transform = 'translateY(30px)';
+                imageContainer.style.transition = 'all 0.8s ease-out 0.2s';
+                observer.observe(imageContainer);
+            }
         });
     </script>
 </body>
-</html>
+</html> 
