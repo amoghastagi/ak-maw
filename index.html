@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AK Make-A-Wish | Ardrey Kell High School</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-text {
+            color: #555;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .content-text strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-star {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 40px 30px;
+                margin-top: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+                margin-bottom: 30px;
+            }
+            
+            .content-text {
+                font-size: 1.1rem;
+            }
+            
+            .logo {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="floating-elements" id="floating-elements"></div>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="logo">★</div>
+            <h1>Welcome to AK Make-A-Wish!</h1>
+            <div class="content-text">
+                <p><strong>At AK Make-A-Wish, we are committed to raising awareness and funds to support the Make-A-Wish Foundation in granting life-changing wishes for children facing critical illnesses.</strong> Partnering with Make-A-Wish Central & Western North Carolina (CWNC), we are proud to be their largest student-led organization. Our mission is to bring hope, strength, and joy to these children by organizing school-wide fundraisers, events, and activities that encourage community involvement and support. As a member, you'll have the chance to develop leadership skills, collaborate with a passionate team of peers, and make a real impact on the lives of families in need. <strong>Join us today and help turn dreams into reality!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create twinkling stars background
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 50;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating star elements
+        function createFloatingElements() {
+            const container = document.getElementById('floating-elements');
+            const symbols = ['✨', '⭐', '💫', '🌟'];
+            
+            for (let i = 0; i < 8; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-star';
+                element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = Math.random() * 90 + '%';
+                element.style.top = Math.random() * 80 + '%';
+                element.style.animationDelay = Math.random() * 6 + 's';
+                element.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                container.appendChild(element);
+            }
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            createFloatingElements();
+        });
+    </script>
+</body>
+</html>
