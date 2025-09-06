@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officers - Ardrey Kell Make-A-Wish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(4, 76, 172, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(1, 37, 79, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(45deg, #ffffff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .logo-container {
+            position: relative;
+        }
+
+        .logo-img.default {
+            opacity: 1;
+        }
+
+        .logo-img.scrolled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .navbar.scrolled .logo-img.default {
+            opacity: 0;
+        }
+
+        .navbar.scrolled .logo-img.scrolled {
+            opacity: 1;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 15px 20px;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(1, 37, 79, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 50px;
+                gap: 30px;
+                transition: left 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                padding: 15px 0;
+            }
+
+            .hamburger-line.active:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger-line.active:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-line.active:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            background: url('assets/background.png');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 40px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .page-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ffffff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Officers Section */
+        .officers-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 120px 40px;
+            position: relative;
+        }
+
+        .officers-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(28, 90, 160, 0.1), transparent);
+        }
+
+        .officers-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .officers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+            justify-items: center;
+        }
+
+        .officer-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .officer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1c5aa0, #2563eb, #3b82f6);
+        }
+
+        .officer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 100px rgba(0, 0, 0, 0.12);
+        }
+
+        .officer-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #1c5aa0, #2563eb);
+            padding: 5px;
+            box-shadow: 0 15px 40px rgba(28, 90, 160, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .officer-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .officer-photo.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            background: linear-gradient(45deg, #1c5aa0, #2563eb);
+        }
+
+        .officer-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1c5aa0;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #1c5aa0, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .officer-position {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .officer-bio {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #475569;
+            text-align: left;
+        }
+
+        .officer-contact {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(28, 90, 160, 0.1);
+        }
+
+        .contact-info {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact-info .icon {
+            font-size: 1rem;
+            color: #3b82f6;
+        }
+
+        /* Special styling for leadership roles */
+
+        .president-card .officer-photo {
+            width: 220px;
+            height: 220px;
+        }
+
+        .president-card .officer-name {
+            font-size: 2.2rem;
+        }
+
+        /* Section headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1c5aa0;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1c5aa0, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 120px 20px 60px;
+            }
+
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .officers-section {
+                padding: 80px 20px;
+            }
+
+            .officers-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .officer-card {
+                padding: 30px 20px;
+            }
+
+            .president-card {
+                grid-column: 1;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .officer-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .president-card .officer-photo {
+                width: 180px;
+                height: 180px;
+            }
+
+            .officer-name {
+                font-size: 1.5rem;
+            }
+
+            .officer-position {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-container">
+                    <img src="assets/logo.png" alt="AK Make-A-Wish Logo" class="logo-img default" id="logo-default">
+                    <img src="assets/logo_scroll.png" alt="AK Make-A-Wish Logo Scrolled" class="logo-img scrolled" id="logo-scrolled">
+                </div>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="officers.html" class="nav-link active">Officers</a></li>
+                <li><a href="events.html" class="nav-link">Events</a></li>
+                <li><a href="achievements.html" class="nav-link">Achievements</a></li>
+                <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Our Leadership Team</h1>
+        <p>Meet the dedicated officers who make our mission possible</p>
+    </section>
+
+    <!-- Officers Section -->
+    <section class="officers-section">
+        <div class="officers-container">
+            <div class="section-header">
+                <h2>Officer Team</h2>
+                <p>Our passionate officers work tirelessly to coordinate events, manage fundraisers, and ensure that every wish we help grant makes a meaningful difference in a child's life.</p>
+            </div>
+
+            <div class="officers-grid">
+                <!-- President -->
+                <div class="officer-card president-card">
+                    <div class="officer-photo placeholder">
+                        <img src="assets/grace.png" alt="Grace">
+                    </div>
+                    <h3 class="officer-name">Grace Nguyen</h3>
+                    <p class="officer-position">President</p>
+                    <div class="officer-bio">
+                        <p>Hi! I'm Grace and I'll be your Make-A-Wish '25-'26 President! I've been in this club for 3 years and I'm so excited for all that's coming this school year!</p>
+                    </div>
+                    <div class="officer-contact">
+                        <div class="contact-info">
+                            <span class="icon">📧</span>
+                            7561334346@student.cms.k12.nc.us
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vice President -->
+                <div class="officer-card">
+                    <div class="officer-photo placeholder">
+                        <img src="assets/amogh.png" alt="Amogh">
+                    </div>
+                    <h3 class="officer-name">Amogh Astagi</h3>
+                    <p class="officer-position">Vice President</p>
+                    <div class="officer-bio">
+                        <p>Hey! I'm Amogh and I'll be your vice president for AK Make-A-Wish this year. I’m super excited to work with all of our members as we make this our most impactful year yet!</p>
+                    </div>
+                    <div class="officer-contact">
+                        <div class="contact-info">
+                            <span class="icon">📧</span>
+                            12658785@student.cms.k12.nc.us
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secretary -->
+                <div class="officer-card">
+                    <div class="officer-photo placeholder">
+                        <img src="assets/tanav.png" alt="Tanav">
+                    </div>
+                    <h3 class="officer-name">Tanav Repala</h3>
+                    <p class="officer-position">Secretary & ICC Representative</p>
+                    <div class="officer-bio">
+                        <p>Hey, I'm Tanav and I'm going to be the ICC and Secretary for this year. I can't wait to contribute to another successful year in Ardrey Kell Make-A-Wish.</p>
+                    </div>
+                    <div class="officer-contact">
+                        <div class="contact-info">
+                            <span class="icon">📧</span>
+                            5567226861@student.cms.k12.nc.us
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treasurer -->
+                <div class="officer-card">
+                    <div class="officer-photo placeholder">
+                        <img src="assets/asha.png" alt="Asha">
+                    </div>
+                    <h3 class="officer-name">Asha Semelsberger</h3>
+                    <p class="officer-position">Social Media Chair</p>
+                    <div class="officer-bio">
+                        <p>Hi, I'm Asha! I'm a senior taking on the role of Social Media Manager for AK Make-A=Wish. I'm beyond excited for the fun and difference we'll make this year!</p>
+                    </div>
+                    <div class="officer-contact">
+                        <div class="contact-info">
+                            <span class="icon">📧</span>
+                            1436254159@student.cms.k12.nc.us
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const hamburgerLines = document.querySelectorAll('.hamburger-line');
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    hamburgerLines.forEach(line => line.classList.toggle('active'));
+                });
+            }
+
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburgerLines.forEach(line => line.classList.remove('active'));
+                });
+            });
+
+            // Navbar scroll effect with logo switching
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Add staggered animation to officer cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+
+            const officerCards = document.querySelectorAll('.officer-card');
+            officerCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
